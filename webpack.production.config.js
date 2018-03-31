@@ -1,6 +1,7 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssets =  require('optimize-css-assets-webpack-plugin')
 
 const config = {
   mode: 'production',
@@ -34,6 +35,23 @@ const config = {
           }
         ],
     },
+    {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loaders: ['file-loader?context=src/assets/images/&name=images/[path][name].[ext]', {
+        loader: 'image-webpack-loader',
+        query: {
+          mozjpeg: { progressive: true },
+          gifsicle: { interlaced: false },
+          optipng: { optimizationLevel: 4 },
+          pngquant: {
+            quality: '75-90',
+            speed: 3,
+          },
+        },
+      }],
+      exclude: /node_modules/,
+      include: __dirname,
+    },
     ]
   },
   plugins: [
@@ -45,7 +63,8 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new OptimizeCSSAssets(),
   ]
 }
 
