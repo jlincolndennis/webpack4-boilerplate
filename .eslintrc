@@ -11,7 +11,7 @@
     "no-unused-vars": "warn",
     "comma-dangle": "warn",
     "global-require": "warn",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
-
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+    "import/first": false,
     }
 }
