@@ -14,7 +14,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: { loader: "babel-loader" }
+        use: { loader: 'babel-loader' },
       },
       {
         test: /\.scss$/,
@@ -41,7 +41,7 @@ const config = {
         exclude: /node_modules/,
         include: __dirname,
       },
-    ]
+    ],
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -57,6 +57,6 @@ const config = {
     open: true,
   },
   devtool: 'cheap-module-eval-source-map',
-}
+};
 
 module.exports = config;

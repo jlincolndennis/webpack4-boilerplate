@@ -1,3 +1,3 @@
 require('./assets/stylesheets/style.scss');
 
-console.log("Hello, Webpack!");
+console.log('Hello, Webpack!');

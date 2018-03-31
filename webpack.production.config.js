@@ -1,7 +1,7 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssets =  require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
 const config = {
   mode: 'production',
@@ -16,7 +16,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: { loader: "babel-loader" }
+        use: { loader: 'babel-loader' },
       },
       {
         test: /\.scss$/,
@@ -28,31 +28,31 @@ const config = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: (loader) => [
+              plugins: loader => [
                 require('autoprefixer')(),
               ]
             }
           }
         ],
-    },
-    {
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      loaders: ['file-loader?context=src/assets/images/&name=images/[path][name].[ext]', {
-        loader: 'image-webpack-loader',
-        query: {
-          mozjpeg: { progressive: true },
-          gifsicle: { interlaced: false },
-          optipng: { optimizationLevel: 4 },
-          pngquant: {
-            quality: '75-90',
-            speed: 3,
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: ['file-loader?context=src/assets/images/&name=images/[path][name].[ext]', {
+          loader: 'image-webpack-loader',
+          query: {
+            mozjpeg: { progressive: true },
+            gifsicle: { interlaced: false },
+            optipng: { optimizationLevel: 4 },
+            pngquant: {
+              quality: '75-90',
+              speed: 3,
+            },
           },
-        },
-      }],
-      exclude: /node_modules/,
-      include: __dirname,
-    },
-    ]
+        }],
+        exclude: /node_modules/,
+        include: __dirname,
+      },
+    ],
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -61,11 +61,11 @@ const config = {
       title: 'Project Title',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new OptimizeCSSAssets(),
-  ]
-}
+  ],
+};
 
 module.exports = config;

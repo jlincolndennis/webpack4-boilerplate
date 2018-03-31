@@ -1,0 +1,17 @@
+{
+"extends": "airbnb",
+"env": {
+  "browser": true,
+  "node": true,
+  "jquery": true
+  },
+  "plugins": ["html", "json"],
+  "rules": {
+    "no-use-before-define": "warn",
+    "no-unused-vars": "warn",
+    "comma-dangle": "warn",
+    "global-require": "warn",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
+
+    }
+}
